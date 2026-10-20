@@ -311,3 +311,36 @@ img{height:auto}
 .foot .credit a b{color:var(--gold);font-weight:500}
 .foot .credit a:hover,.foot .credit a:focus-visible{color:var(--gold)}
 @media (max-width:700px){.foot .credit .sep{display:none}.foot .credit .en{display:block;margin-top:4px;font-size:11px;letter-spacing:.03em;opacity:.85}}
+
+/* ===================== v6: swipe carousel for «شوف بنفسك» ===================== */
+#films{padding-bottom:96px}
+#films .head{margin-bottom:0}
+.car{position:relative;margin:88px 0 0;padding:0}
+.car-track{display:flex;gap:24px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;overscroll-behavior-x:contain;scrollbar-width:none;padding:4px max(20px,calc((100% - 1160px)/2));scroll-padding-inline:max(20px,calc((100% - 1160px)/2));outline:none}
+.car-track::-webkit-scrollbar{display:none}
+.car-track>.cslide:first-child{margin-inline-start:auto}
+.car-track>.cslide:last-child{margin-inline-end:auto}
+.cslide{position:relative;flex:0 0 auto;width:min(340px,calc(68vh * 9 / 16));width:min(340px,calc(68svh * 9 / 16));aspect-ratio:9/16;margin:0;scroll-snap-align:center;scroll-snap-stop:always;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:#151826}
+.cslide video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#151826;display:block}
+.cslide.sq::before{content:"";position:absolute;inset:-24px;background:var(--bg,none) center/cover;filter:blur(22px) brightness(.55);transform:scale(1.1)}
+.cslide.sq video{object-fit:contain;background:transparent}
+.cslide figcaption{position:absolute;inset:auto 0 0 0;z-index:2;padding:14px 16px;background:rgba(32,37,57,.88);color:var(--paper);font-weight:500;font-size:15px;line-height:1.45}
+.cslide figcaption small{display:block;color:var(--gold);font-size:12px;margin-top:2px}
+.cslide .snd{bottom:auto;top:12px;z-index:3}
+.car-btn{position:absolute;top:calc(50% - 22px);transform:translateY(-50%);z-index:4;width:44px;height:44px;border-radius:50%;border:1px solid rgba(193,178,139,.5);background:rgba(32,37,57,.86);color:var(--gold);display:grid;place-items:center;cursor:pointer;padding:0;transition:opacity .2s}
+.car-btn svg{width:22px;height:22px}
+.car-prev{right:max(12px,calc((100% - 1160px)/2 - 56px))}
+.car-next{left:max(12px,calc((100% - 1160px)/2 - 56px))}
+.car-btn:disabled{opacity:0;pointer-events:none}
+.car-dots{display:flex;justify-content:center;gap:10px;margin-top:22px}
+.car-dots button{width:9px;height:9px;padding:0;border-radius:50%;border:1px solid var(--gold-ink);background:transparent;cursor:pointer;transition:background .2s,transform .2s}
+.car-dots button.on{background:var(--gold-ink);transform:scale(1.25)}
+.car.fits .car-btn,.car.fits .car-dots{display:none}
+@media (max-width:759px){
+  #films{padding-bottom:88px}
+  .car{margin:80px 0 0}
+  .car-track{gap:14px;padding-inline:7vw;scroll-padding-inline:7vw}
+  .cslide{width:min(86vw,calc(72vh * 9 / 16));width:min(86vw,calc(72svh * 9 / 16))}
+  .car-btn{width:38px;height:38px;top:calc(50% - 22px)}
+  .car-prev{right:6px}.car-next{left:6px}
+}
